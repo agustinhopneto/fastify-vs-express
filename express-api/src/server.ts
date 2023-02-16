@@ -6,6 +6,7 @@ import { transactionRoutes } from './routes/transactions'
 const app = express()
 
 app.use(json())
+
 app.use('/transactions', transactionRoutes)
 
 app.listen(env.APP_PORT, () => {
