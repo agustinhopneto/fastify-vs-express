@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "ISC",
   "scripts": {
-    "dev:fastify": "cd ./fastify-api && npm run dev"
+    "dev:fastify": "cd ./fastify-api && npm run dev",
+    "dev:express": "cd ./express-api && npm run dev"
   }
 }
