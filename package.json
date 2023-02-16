@@ -3,7 +3,18 @@
   "version": "1.0.0",
   "license": "ISC",
   "scripts": {
+    "clear": "rm -rf ./reports && mkdir reports",
     "dev:fastify": "cd ./fastify-api && npm run dev",
-    "dev:express": "cd ./express-api && npm run dev"
+    "dev:express": "cd ./express-api && npm run dev",
+    "report:fastify": "npx artillery report -o ./reports/fastify.report.html ./reports/fastify.report.json",
+    "report:express": "npx artillery report -o ./reports/express.report.html ./reports/express.report.json",
+    "load-test:fastify": "npx artillery quick -o ./reports/fastify.report.json --count 1000 --num 100 http://localhost:3333/transactions",
+    "load-test:express": "npx artillery quick -o ./reports/express.report.json --count 1000 --num 100 http://localhost:3334/transactions",
+    "fastify": "npm run load-test:fastify && npm run report:fastify",
+    "express": "npm run load-test:express && npm run report:express",
+    "load-test": "npm run clear && npm run fastify && npm run express"
+  },
+  "devDependencies": {
+    "artillery": "^2.0.0-30"
   }
 }
